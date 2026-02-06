@@ -58,5 +58,65 @@ public class LinkedList {
      *     // menu
      * If you complete all of these save the code, copy  and refactor the entire project as a doubly linked list.
      */
+    // to remove an item
+    public void remove(String item){
+        if (isEmpty()) {
+            return;
+        }
+
+        if (head.getData().equals(item)) {
+            head = head.getNext();
+            size--;
+            if (head==null) {
+                tail = null;
+            }
+            return;
+        }
+
+        Node node = head;
+        while (node != null) {
+            if (node.getNext().getData().equals(item)) {
+                if (node.getNext()==tail) {
+                    tail = node;
+                }
+                node.setNext(node.getNext().getNext());
+                size--;
+                return;
+            }
+            node = node.getNext();
+        }
+
+    }
+        // replace item
+    public void replace (String item, String newItem){
+        Node current = head;
+        boolean found = false;
+        while (current != null && !found) {
+            if (current.getData().equals(item)) {
+                current.setData(newItem);
+                found = true;
+            }
+            current = current.getNext();
+        }
+
+        }
+        //  delete item at index
+    public void delete(int index){
+        Node temp = head;
+        if (index == 0) {
+            head = head.getNext();
+        } else {
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.getNext();
+            }
+            temp.setNext(temp.getNext().getNext());
+        }
+    }
+    // add at head
+    public void addAtHead(String item){
+        Node tempHead = new Node(item);
+        tempHead.setNext(head);
+        head = tempHead;
+    }
 
 }

@@ -8,5 +8,8 @@ public class Main {
         linkedList.add("Cat");
         linkedList.add("Dog");
         linkedList.print();
+        linkedList.addAtHead("test");
+        linkedList.print();
     }
+
 }
